@@ -5,9 +5,9 @@ use anchor_lang::prelude::*;
 pub struct Proposal {
     pub realm: Pubkey,
     pub proposer: Pubkey,
-    #[max_len(100)]
+    #[max_len(50)]
     pub title: String,
-    #[max_len(500)]
+    #[max_len(200)]
     pub description: String,
     pub vote_yes: u64,
     pub vote_no: u64,
@@ -15,7 +15,7 @@ pub struct Proposal {
     pub voting_at: Option<i64>,
     pub voting_completed_at: Option<i64>,
     pub executing_at: Option<i64>,
-    #[max_len(10)]
+    #[max_len(3)]
     pub instructions: Vec<ProposalInstruction>,
     pub bump: u8,
 }
@@ -34,9 +34,9 @@ pub enum ProposalState {
 #[derive(AnchorSerialize, AnchorDeserialize, Clone, InitSpace)]
 pub struct ProposalInstruction {
     pub program_id: Pubkey,
-    #[max_len(20)]
+    #[max_len(10)]
     pub accounts: Vec<ProposalAccountMeta>,
-    #[max_len(1000)]
+    #[max_len(200)]
     pub data: Vec<u8>,
 }
 
